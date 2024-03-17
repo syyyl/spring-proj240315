@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+</head>
+<body>
+    <div th:replace="common/header.html"></div>
+    <table>
+
+        <hr>
+
+        <tr>
+            <th>도서번호</th>
+            <th>제목</th>
+            <th>출판사</th>
+            <th>출간일</th>
+            <th>보유권수</th>
+            <th>분야</th>
+            <th>대출가능여부</th>
+        </tr>
+
+        <tr th:each="book : ${ bookList }">
+            <td th:text="${ book.bookCode }"></td>
+            <td th:text="${ book.bookName }"></td>
+            <td th:text="${ book.publisher }"></td>
+            <td th:text="${ book.releaseDate }"></td>
+            <td th:text="${ book.amount }"></td>
+            <td th:text="${ book.categoryCode }"></td>
+            <td th:text="${ book.loanableYN }"></td>
+        </tr>
+
+    </table>
+
+    <script>
+        const successMessage = '[[${ successMessage }]]';
+        if (successMessage) {
+            alert(successMessage);
+        }
+    </script>
+</body>
+</html>

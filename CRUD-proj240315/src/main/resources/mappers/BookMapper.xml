@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ohgiraffers.proj240315.book.model.dao.BookMapper">
+
+    <select id="findAllBook"
+            resultType="com.ohgiraffers.proj240315.book.model.dto.BookDTO">
+            SELECT
+                book_code,
+                book_name,
+                publisher,
+                release_date,
+                amount,
+                category_code,
+                loanable_yn
+            FROM
+                book_info
+            ORDER BY
+                book_code
+    </select>
+
+    <insert id="registBook">
+        INSERT INTO
+            book_info(book_name, publisher, release_date, amount, category_code, loanable_yn)
+        VALUES
+            (#{ bookName }, #{ publisher }, #{ releaseDate },
+             #{ amount }, #{ categoryCode }, #{ loanableYN })
+    </insert>
+
+</mapper>
